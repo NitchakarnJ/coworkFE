@@ -54,7 +54,7 @@ export default function Navbar(){
           {isMenuOpenL?(
             <div className='lg:visible md:visible'>
               <div className="absolute  right-0 z-50 mt-[77px] w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="block px-4 py-2 text-sm text-gray-700 "> {session?.user?.name}</div>
+                <div className="block px-4 py-2 text-sm text-gray-700 "></div>
                 <hr className="border-gray-300 mt-1" />
                 <Link href={'/profile'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</Link>
                 <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Bookings</Link>
