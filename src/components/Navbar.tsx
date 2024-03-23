@@ -21,8 +21,9 @@ export default function Navbar(){
     setIsMenuOpenL(!isMenuOpenL) //!false = true
   }
 
-  const {data: session} = useSession()
-  console.log(session?.user._id)
+
+
+
 
   return (
 
@@ -45,15 +46,8 @@ export default function Navbar(){
               <TopMenuItem title='Coworking' pageRef='/coworking' />
               <TopMenuItem title='Booking' pageRef='/booking' />
               <TopMenuItem title='About Us' pageRef='/about' />
-              {/* Add more navigation links here */}
-              {
-                  session?<div className='flex justify-center'><Image src={'/img/userlogo.png'} className='h-[40%] mt-11 w-auto mb-auto mt-auto' 
-                  alt='logo' width={0} height={0} sizes='15vh' onClick={toggleMenuL}/>
-                  </div>
-                  :<TopMenuItem title='Login' pageRef='/'/>
-                  
-                  // <TopMenuItem title='Sign in' pageRef='/api/auth/signin'/>
-              }
+              
+
             </div>
           </div>
 
@@ -90,23 +84,13 @@ export default function Navbar(){
       
       {isMenuOpen?(
         <div className="md:hidden" id="mobile-menu">
-        <div className="absolute right-0 z-40 mt-0 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" id="mobile-menu">
-          {/* Add more navigation links here */}
-          <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home</Link>
-          <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Booking</Link>
-          <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About us</Link>
-          {
-                  session?
-                  <div>
-                    <Link href={'/profile'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</Link>
-                    <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Bookings</Link>
-                    <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</Link>
-                  </div>
-                  
-                  :null
-          }
+          <div className="absolute right-0 z-40 mt-0 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" id="mobile-menu">
+            {/* Add more navigation links here */}
+            <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home</Link>
+            <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Booking</Link>
+            <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About us</Link>
+          </div>
         </div>
-      </div>
       ):null}
       {/* Mobile menu */}
       
