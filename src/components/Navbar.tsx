@@ -5,7 +5,7 @@ import Link from 'next/link';
 import TopMenuItem from './TopMenuItem'
 import Image from 'next/image'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+// import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 
@@ -50,7 +50,7 @@ export default function Navbar(){
                   session?<div className='flex justify-center'><Image src={'/img/userlogo.png'} className='h-[40%] mt-11 w-auto mb-auto mt-auto' 
                   alt='logo' width={0} height={0} sizes='15vh' onClick={toggleMenuL}/>
                   </div>
-                  :<TopMenuItem title='Login' pageRef='/login'/>
+                  :<TopMenuItem title='Login' pageRef='/'/>
                   
                   // <TopMenuItem title='Sign in' pageRef='/api/auth/signin'/>
               }
@@ -64,7 +64,7 @@ export default function Navbar(){
                 <hr className="border-gray-300 mt-1" />
                 <Link href={'/profile'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</Link>
                 <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Bookings</Link>
-                <Link href={'/api/auth/signout'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:rounded-b-md">Logout</Link>
+                <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:rounded-b-md">Logout</Link>
               </div>
           </div>
           ):null}
@@ -100,7 +100,7 @@ export default function Navbar(){
                   <div>
                     <Link href={'/profile'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Profile</Link>
                     <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Bookings</Link>
-                    <Link href={'/api/auth/signout'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</Link>
+                    <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</Link>
                   </div>
                   
                   :null
