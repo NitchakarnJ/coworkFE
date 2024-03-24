@@ -1,9 +1,9 @@
-import getHospital from "@/libs/getHospital"
+import getCoworking from "@/libs/getCoworking"
 import Image from "next/image"
 
-export default async function HospitalDetailPage({params}:{params:{hid:string}}){
+export default async function CoworkingDetailPage({params}:{params:{cid:string}}){
 
-   const hospitalDetail = await getHospital(params.hid)
+   const coworkingDetail = await getCoworking(params.cid)
    /**
     * Mock Data for Demontration
     */
@@ -15,17 +15,19 @@ export default async function HospitalDetailPage({params}:{params:{hid:string}})
 
    return(
       <main className="text-center p-5">
-         <h1 className="text-lg font-medium">Hospital ID {params.hid}</h1>
+         <h1 className="text-lg font-medium">Hospital ID {params.cid}</h1>
          <div className="flex flex-row my-5">
-            <Image src={hospitalDetail.data.picture}
+            <Image src={coworkingDetail.data.picture}
                alt="Car Image"
                width={0} height={0} sizes="100vw"
                className="rounded-lg w-[30%] "
             />
-            <div className="text-md mx-5 text-left">{ hospitalDetail.data.description }
-               <div className="text-md mx-5">{ hospitalDetail.data.name }</div>
-               <div className="text-md mx-5">{ hospitalDetail.data.address } { hospitalDetail.data.district} { hospitalDetail.data.province} { hospitalDetail.data.postalcode} </div>
-               <div className="text-md mx-5">{ hospitalDetail.data.tel }</div>
+            <div className="text-md mx-5 text-left">{ coworkingDetail.data.description }
+               <div className="text-md mx-5">{ coworkingDetail.data.name }</div>
+               <div className="text-md mx-5">{ coworkingDetail.data.address } { coworkingDetail.data.district} { coworkingDetail.data.province} { coworkingDetail.data.region} { coworkingDetail.data.postalcode} </div>
+               <div className="text-md mx-5">{ coworkingDetail.data.telephone }</div>
+               <div className="text-md mx-5">{ coworkingDetail.data.opentime } - {coworkingDetail.data.closetime}</div>
+
             </div>
          </div>
       </main>

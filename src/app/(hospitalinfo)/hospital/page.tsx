@@ -1,21 +1,22 @@
-import CardPanel from "@/components/CardPanel"
-import getHospitals from "@/libs/getHospitals"
+
+import getCoworkings from "@/libs/getCoworkings"
 import { Suspense } from "react"
 import { LinearProgress } from "@mui/material"
-import HospitalCatalog from "@/components/HospitalCatalog"
+
+import CoworkingCatalog from "@/components/CoworkingCatalog"
 
 
 
-export default function Hospital(){
+export default function Coworking(){
 
-   const hospitals = getHospitals()
+   const  coworkings = getCoworkings()
 
 
    return (
       <main className="text-center p-5">
-         <h1 className="text-xl font-medium">Select Your Travel Partner</h1>
+         <h1 className="text-xl font-medium">Select Coworking</h1>
          <Suspense fallback={<p>Looding...<LinearProgress/></p>}>
-            <HospitalCatalog hospitalsJson={hospitals}/>
+            <CoworkingCatalog coworkingsJson={coworkings}/>
          </Suspense>
       </main>
    )
