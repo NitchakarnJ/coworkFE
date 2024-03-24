@@ -21,3 +21,11 @@ interface CoworkingJson {
   data: CoworkingItem[]
 }
 
+export interface BookingItem {
+  coworkingId: string
+  coworkingName: string
+  bookDate: string
+  start: string
+  end: string
+  userId: string
+}
