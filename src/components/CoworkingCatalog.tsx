@@ -1,6 +1,5 @@
 import Card from "./Card"
 import Link from "next/link"
-import { CoworkingItem,CoworkingJson } from "../../interface"
 
 export default async function CoworkingCatalog({coworkingsJson}:{coworkingsJson:Promise<CoworkingJson>}){
 
