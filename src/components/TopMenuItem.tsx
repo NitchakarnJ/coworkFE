@@ -1,10 +1,8 @@
 import Link from "next/link";
-import styles from './topmenu.module.css'
-
 
 export default function TopMenuItem({title,pageRef}:{title:string,pageRef:string}){
    return(
-      <Link href={pageRef} className='w-[120px] text-center mt-auto mb-auto font-sans-serif ... text-[10pt] text-gray-500'>
+      <Link href={pageRef} className='w-[100px] text-center font-extrabold mt-auto mb-auto font-sans-serif ... text-[13pt] text-black'>
          {title}
       </Link>
    )
