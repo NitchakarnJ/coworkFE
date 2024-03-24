@@ -1,19 +1,23 @@
-interface HospitalItem {
-    _id: string,
-    name: string,
-    address: string,
-    district: string,
-    province: string,
-    postalcode: string,
-    tel: string,
-    picture: string,
-    __v: number,
-    id: string
-  }
-  
-  interface HospitalJson {
-    success: boolean,
-    count: number,
-    pagination: Object,
-    data: HospitalItem[]
-  }
+interface CoworkingItem {
+  _id: string,
+  name: string,
+  address: string,
+  district: string,
+  province: string,
+  postalcode: string,
+  telephone: string,
+  region:string,
+  opentime:string,
+  closetime:string,
+  picture: string,
+  __v: number,
+  id: string
+}
+
+interface CoworkingJson {
+  success: boolean,
+  count: number,
+  pagination: Object,
+  data: CoworkingItem[]
+}
+
