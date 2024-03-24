@@ -1,14 +1,15 @@
-import Banner from "@/components/Banner";
-import ContentCowork from "@/components/ContentCowork";
-import UserMenu from "@/components/UserMenu";
-import Image from "next/image";
+import Image from 'next/image'
+import styles from './page.module.css'
+import Banner from '@/components/Banner'
+import Card from '@/components/Card'
+import CardPanel from '@/components/CardPanel'
+import PromoteCard from '@/components/PromoteCard'
 
 export default function Home() {
   return (
     <main>
       <Banner/>
-      <ContentCowork/>
-      {/* <UserMenu/> */}
+      <PromoteCard/>
     </main>
   )
 }

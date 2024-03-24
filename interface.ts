@@ -1,24 +1,19 @@
-interface CoworkingItem {
+interface HospitalItem {
     _id: string,
     name: string,
     address: string,
     district: string,
     province: string,
     postalcode: string,
-    telephone: string,
-    region:string,
-    opentime:string,
-    closetime:string,
+    tel: string,
     picture: string,
     __v: number,
     id: string
   }
   
-  interface CoworkingJson {
+  interface HospitalJson {
     success: boolean,
     count: number,
     pagination: Object,
-    data: CoworkingItem[]
+    data: HospitalItem[]
   }
-
-  
