@@ -7,6 +7,7 @@ export interface BookingItem {
   userId: string
 }
 
+
 export interface CoworkingItem {
   _id: string,
   name: string,
@@ -30,3 +31,34 @@ export interface CoworkingJson {
   data: CoworkingItem[]
 }
 
+export interface BookingItem2 {
+  _id: string
+  apptDate: string
+  user: string
+  coworking: {
+                _id: string
+                name: string
+                province: string
+                id: string
+              }
+  start: string
+  end: string
+  createAt: string
+  __v: string
+}
+
+export interface BookingJson {
+  success: boolean,
+  count: number,
+  data: BookingItem2[]
+}
+
+export interface User{
+  _id:string,
+  name:string,
+  email:string,
+  telephone: string,
+  role: string,
+  password:string,
+  token: string
+}
