@@ -5,8 +5,8 @@ import { CoworkingItem, CoworkingJson } from "../../interface"
 export default async function CoworkingCatalog({coworkingsJson}:{coworkingsJson:Promise<CoworkingJson>}){
 
    const coworkingsJsonReady = await coworkingsJson
-   window.alert(coworkingsJsonReady.count)
-
+   // window.alert(coworkingsJsonReady.count)
+   console.log(coworkingsJsonReady.count)
    return(
       <>
       Explore {coworkingsJsonReady.count} model in our Coworking
