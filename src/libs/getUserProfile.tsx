@@ -1,6 +1,7 @@
 export default async function getUserProfile(token:string){
    
-   const response = await fetch("https://coworking-reservation-app-isamare.vercel.app/api/project/auth/me",{
+   const response = await fetch(`${process.env.BACKEND_URL}/api/project/auth/me`,{
+      cache: "no-store",
       method: "GET",
       headers: {
          authorization: `Bearer ${token}`,

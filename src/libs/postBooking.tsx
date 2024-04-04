@@ -2,7 +2,7 @@ import { BookingItem } from "../../interface"
 
 export default async function postBooking(token: string, bookingItem: BookingItem){
    
-    const response = await fetch(`https://coworking-reservation-app-isamare.vercel.app/api/project/coworkings/${bookingItem.coworkingId}/reservations`,{
+    const response = await fetch(`${process.env.BACKEND_URL}/api/project/coworkings/${bookingItem.coworkingId}/reservations`,{
        method: "POST",
        headers: {
             "Content-type":"application/json",
@@ -10,15 +10,13 @@ export default async function postBooking(token: string, bookingItem: BookingIte
        },
        body: JSON.stringify({
         apptDate: bookingItem.bookDate,
-        /*user: bookingItem.userId,
-        coworking: bookingItem.coworkingId,*/
         start: bookingItem.start,
         end: bookingItem.end
      }),
     })
     
     if(!response.ok){
-       throw new Error("Cannot post booking")
+      return await response.json()
     }
 
     return await response.json()

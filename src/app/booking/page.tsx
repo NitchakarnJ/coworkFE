@@ -13,6 +13,7 @@ import { DatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import postBooking from "@/libs/postBooking";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+import Link from "next/link";
 
 export default function Booking() {
     const {data: session} = useSession()
@@ -35,15 +36,17 @@ export default function Booking() {
                userId: user
             }
             console.log(item)
-            try {
-               const booking = await postBooking(session.user.token, item);
-               console.log("Booking result:", booking);
-               setHasBooked(true)
-               // Dispatch any action if needed
-           } catch (error) {
-               console.error("Error occurred while booking:", error);
-               // Handle error as needed
-           }
+            
+            const booking = await postBooking(session.user.token, item);
+            console.log("Booking result:", booking);
+            if (booking.success == true) {
+                setHasBooked(true)
+                
+
+            }
+            else if (booking.success == false) {
+                alert(booking.message)
+            }
         }
     }
 
@@ -52,28 +55,37 @@ export default function Booking() {
     const [end, setEnd] = useState<string|null>(null)
 
     return (
-        <main className="w-[100%] flex flex-col items-center space-y-4">
-            <div className="text-xl font-medium">New Booking</div>
-            <div className="text-xl font-medium">Coworking space: {name}</div>
-            <div className="w-fit space-y-2">
-                <div className="text-md text-left text-gray-600">Choose Date to Book</div>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker className="bg-white"
-                value={bookDate} onChange={(value)=>{setBookDate(value)}}/>
-               </LocalizationProvider>
-                <div className="text-md text-left text-gray-600">Start</div>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-               <TimePicker className="bg-white" value={start} onChange={(newValue) => {setStart(newValue)}}/>
-               </LocalizationProvider>
-                <div className="text-md text-left text-gray-600">End</div>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-               <TimePicker className="bg-white" value={end} onChange={(newValue) => {setEnd(newValue)}}/>
-               </LocalizationProvider>
+        <main className="mt-8">
+            <div className="bg-white  min-h-full w-auto rounded-3xl m-8 px-16 py-12 md:px-15 md:mx-20 relative ">
+            <div className="text-3xl  font-bold text-center mb-6 text-[#252645]">New Booking</div>
+
+            <hr className="bg-gray-200 border-1 mb-6" />
+            
+            
+            <div className="text-xl font-medium text-center">Coworking space: {name}</div>
+                
+                <div className="flex flex-wrap  justify-center  my-5 relative mb-8">
+                    <div className=" space-y-2 ">
+                        <div className="text-md text-left text-gray-600 ">Choose Date to Book</div>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DatePicker className="bg-white w-[300px]"
+                            value={bookDate} onChange={(value)=>{setBookDate(value)}}/>
+                        </LocalizationProvider>
+                        <div className="text-md text-left text-gray-600">Start</div>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <TimePicker className="bg-white w-[300px]" value={start} onChange={(newValue) => {setStart(newValue)}}/>
+                        </LocalizationProvider>
+                        <div className="text-md text-left text-gray-600">End</div>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <TimePicker className="bg-white w-[300px]" value={end} onChange={(newValue) => {setEnd(newValue)}}/>
+                        </LocalizationProvider>
+                    </div>
+                    
+                </div>
+                {
+                        hasBooked?<Link href={'/mybooking'}><button className="block m-auto rounded-md px-8 py-2 font-semibold text-white shadow-sm bg-[#252645] bg-gradient-to-r hover:from-[#252645] hover:to-[#5C5EAB]">View My Booking</button></Link>:<button className="block m-auto rounded-md px-8 py-2 font-semibold text-white shadow-sm bg-[#252645] bg-gradient-to-r hover:from-[#252645] hover:to-[#5C5EAB]" onClick={book}>Book This</button>
+                    }
             </div>
-            <button className="block rounded-md bg-lime-700 hover:bg-lime-900 px-3 py-2 text-white shadow-sm" onClick={book}>
-            {
-                hasBooked?'Booked':'Book This'
-            }</button>
         </main>
     );
 }

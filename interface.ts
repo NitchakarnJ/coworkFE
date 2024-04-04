@@ -7,7 +7,6 @@ export interface BookingItem {
   userId: string
 }
 
-
 export interface CoworkingItem {
   _id: string,
   name: string,
@@ -40,11 +39,17 @@ export interface BookingItem2 {
                 name: string
                 province: string
                 id: string
-              }
+              }|null
   start: string
   end: string
   createAt: string
   __v: string
+}
+
+export interface BookingItemEdit{
+  apptDate: string
+  start: string
+  end: string
 }
 
 export interface BookingJson {
@@ -54,11 +59,57 @@ export interface BookingJson {
 }
 
 export interface User{
-  _id:string,
   name:string,
   email:string,
   telephone: string,
-  role: string,
   password:string,
-  token: string
+}
+export interface UserUpdate{
+  name:string,
+  email:string,
+  telephone: string,
+  
+}
+
+export interface CoworkingItemCreate{
+  name:string,
+  address:string,
+  district:string,
+  province:string,
+  postalcode:string,
+  telephone:string,
+  region:string,
+  opentime:string,
+  closetime:string,
+  picture:string
+}
+
+export interface UserItem {
+  _id: string
+  name: string
+  telephone: string
+  email: string
+  role: string
+  createdAt: string
+  __v: 0,
+  reservations: UserBookingItem[]
+  id: string
+}
+
+export interface UserBookingItem {
+  _id: string
+  apptDate: string
+  user: string
+  coworking: string
+  start: string
+  end: string
+  createAt: string
+  __v: string
+}
+
+export interface UserJson {
+  success: boolean,
+  count: number,
+  pagination: {}
+  data: UserItem[]
 }
